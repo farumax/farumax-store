@@ -1,5 +1,5 @@
 const products=[
-{id:1,name:"Wireless Bluetooth Headphones",category:"Electronics",price:7490,emoji:"🎧",image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=700},
+{id:1,name:"Wireless Bluetooth Headphones",category:"Electronics",price:7490,emoji:"🎧",image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=700"},
 {id:2,name:"Smart Watch Series",category:"Electronics",price:12990,emoji:"⌚",image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700"},
 {id:3,name:"Everyday Backpack",category:"Fashion",price:5490,emoji:"🎒",image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=700"},
 {id:4,name:"Classic Sneakers",category:"Fashion",price:8990,emoji:"👟",image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700"},
