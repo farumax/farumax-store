@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100b1c">
+  <meta name="description" content="FARUMAX — everyday essentials, electronics, fashion and more in Sri Lanka.">
+  <title>FARUMAX — Shop Everything</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#" aria-label="FARUMAX home"><span class="brand-mark">F</span> FARU<span>MAX</span></a>
+  <div class="search-wrap"><span>⌕</span><input id="searchInput" type="search" placeholder="Search products, brands and more..." aria-label="Search products"></div>
+  <div class="header-actions"><button class="icon-btn" id="accountBtn" title="Account">♙</button><button class="cart-btn" id="cartBtn">Bag <b id="cartCount">0</b></button></div>
+</header>
+<main>
+  <section class="hero">
+    <div class="hero-copy"><p class="eyebrow">THE EVERYDAY STORE, REIMAGINED</p><h1>Everything you need.<br><em>One place.</em></h1><p class="hero-sub">Discover everyday essentials, tech, style and more — all in one easy shop.</p><a class="primary-btn" href="#shop">Explore the store <span>↗</span></a><div class="hero-note"><span class="pulse"></span> A smarter way to shop in Sri Lanka</div></div>
+    <div class="hero-art"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="hero-card card-a">✦<small>DAILY FINDS</small></div><div class="hero-card card-b">◈<small>TECH & GADGETS</small></div><div class="hero-card card-c">✧<small>STYLE YOUR WAY</small></div><div class="hero-core">F<span>+</span></div></div>
+  </section>
+  <section class="trust-row"><div>✦ <span>Curated finds</span></div><div>◈ <span>Simple shopping</span></div><div>⌁ <span>Islandwide-ready store</span></div><div>♡ <span>Made for everyday</span></div></section>
+  <section id="shop" class="shop-section">
+    <div class="section-heading"><div><p class="eyebrow">FIND YOUR NEXT FAVOURITE</p><h2>Shop by category</h2></div><p class="muted">A little bit of everything.</p></div>
+    <div class="categories" id="categories"></div>
+    <div class="section-heading products-heading"><div><p class="eyebrow">THE FARUMAX EDIT</p><h2 id="productHeading">Popular right now</h2></div><select id="sortSelect" aria-label="Sort products"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="name">Name: A–Z</option></select></div>
+    <div class="product-grid" id="productGrid"></div>
+    <p class="empty hidden" id="emptyState">No products found. Try another search.</p>
+  </section>
+  <section class="newsletter"><div><p class="eyebrow">STAY IN THE LOOP</p><h2>Good finds. Fresh updates.</h2><p>Join the FARUMAX list for new arrivals and store updates.</p></div><form id="newsletterForm"><input type="email" placeholder="Your email address" required><button class="primary-btn">Notify me</button></form></section>
+</main>
+<footer><a class="brand" href="#"><span class="brand-mark">F</span> FARU<span>MAX</span></a><p>Everyday shopping, made simple.</p><small>© <span id="year"></span> FARUMAX. Demo storefront — update store details before launch.</small></footer>
+
+<div class="overlay hidden" id="cartOverlay"><aside class="drawer"><div class="drawer-head"><div><p class="eyebrow">YOUR SELECTION</p><h2>Shopping bag</h2></div><button class="close-btn" data-close="cartOverlay">×</button></div><div id="cartItems" class="cart-items"></div><div class="cart-bottom"><div class="total-line"><span>Subtotal</span><strong id="cartTotal">LKR 0</strong></div><p class="muted tiny">Delivery charges, if any, are confirmed by the store.</p><button class="primary-btn full" id="checkoutBtn">Continue to checkout →</button></div></aside></div>
+
+<div class="overlay hidden" id="checkoutOverlay"><section class="modal"><button class="close-btn modal-close" data-close="checkoutOverlay">×</button><p class="eyebrow">ALMOST THERE</p><h2>Checkout</h2><p class="muted tiny">Demo checkout: orders are saved only in this browser until a real backend is connected.</p><form id="checkoutForm" class="checkout-form"><label>Full name<input name="name" required maxlength="80"></label><label>Phone number<input name="phone" required type="tel" placeholder="07X XXX XXXX"></label><label>Delivery address<textarea name="address" required rows="3"></textarea></label><label>Payment method<select name="payment"><option>Cash on delivery (confirm with store)</option><option>Bank transfer (arrange with store)</option></select></label><button class="primary-btn full">Place demo order</button></form></section></div>
+
+<div class="overlay hidden" id="productOverlay"><section class="modal product-modal"><button class="close-btn modal-close" data-close="productOverlay">×</button><div id="productDetail"></div></section></div>
+<div class="toast" id="toast" role="status"></div>
+<script src="app.js"></script>
+</body></html>
