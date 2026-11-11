@@ -31,9 +31,7 @@ $("#newsletterForm").onsubmit=e=>{e.preventDefault();toast("Thanks! Newsletter s
 $("#accountBtn").onclick=()=>toast("Customer accounts will be enabled after backend setup.");$("#year").textContent=new Date().getFullYear();renderCategories();renderProducts();persist();
 
 
-// FARUMAX WhatsApp Order System
-// Replace this with an adult-managed public store WhatsApp number.
-// Sri Lanka format: 947XXXXXXXX (no + and no starting 0)
+
 const STORE_WHATSAPP = "94753777492";
 
 $("#checkoutForm").onsubmit = e => {
