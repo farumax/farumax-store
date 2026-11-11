@@ -30,5 +30,45 @@ $("#checkoutForm").onsubmit=e=>{e.preventDefault();let data=Object.fromEntries(n
 $("#newsletterForm").onsubmit=e=>{e.preventDefault();toast("Thanks! Newsletter signup is a demo only.");e.target.reset()};
 $("#accountBtn").onclick=()=>toast("Customer accounts will be enabled after backend setup.");$("#year").textContent=new Date().getFullYear();renderCategories();renderProducts();persist();
 
+const STORE_WHATSAPP = "94XXXXXXXXX";
+
+$("#checkoutForm").onsubmit = e => {
+  e.preventDefault();
+
+  if (!cart.length) {
+    toast("Your shopping bag is empty.");
+    return;
+  }
+
+  const data = Object.fromEntries(new FormData(e.target));
+  const items = cart.map(x => ({
+    ...products.find(p => p.id === x.id),
+    qty: x.qty
+  }));
+
+  const total = items.reduce((sum, p) => sum + p.price * p.qty, 0);
+  const reference = "FM" + Date.now().toString().slice(-8);
+
+  const message = [
+    "🛍️ FARUMAX NEW ORDER",
+    "Order: " + reference,
+    "",
+    "Customer: " + data.name,
+    "Phone: " + data.phone,
+    "Address: " + data.address,
+    "",
+    "PRODUCTS:",
+    ...items.map(p => p.name + " x " + p.qty + " = " + money(p.price * p.qty)),
+    "",
+    "TOTAL: " + money(total),
+    "Payment: " + (data.payment || "Cash on delivery")
+  ].join("\n");
+
+  const url = "https://wa.me/" + STORE_WHATSAPP + "?text=" + encodeURIComponent(message);
+
+  window.open(url, "_blank");
+};
+
+
 
 
