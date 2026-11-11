@@ -29,3 +29,61 @@ $("#searchInput").addEventListener("input",renderProducts);$("#sortSelect").onch
 $("#checkoutForm").onsubmit=e=>{e.preventDefault();let data=Object.fromEntries(new FormData(e.target));let items=cart.map(x=>({...products.find(p=>p.id===x.id),qty:x.qty}));let order={reference:"FM"+Date.now().toString().slice(-8),date:new Date().toISOString(),customer:data,items,total:items.reduce((s,p)=>s+p.price*p.qty,0)};let orders=JSON.parse(localStorage.getItem("farumax_demo_orders")||"[]");orders.push(order);localStorage.setItem("farumax_demo_orders",JSON.stringify(orders));cart=[];persist();e.target.reset();close("checkoutOverlay");toast("Demo order saved on this device: "+order.reference);alert("Thank you! Demo order "+order.reference+" was saved in this browser only. The store owner will NOT receive it until a backend is connected.")};
 $("#newsletterForm").onsubmit=e=>{e.preventDefault();toast("Thanks! Newsletter signup is a demo only.");e.target.reset()};
 $("#accountBtn").onclick=()=>toast("Customer accounts will be enabled after backend setup.");$("#year").textContent=new Date().getFullYear();renderCategories();renderProducts();persist();
+
+
+// FARUMAX WhatsApp Order System
+// Replace this with an adult-managed public store WhatsApp number.
+// Sri Lanka format: 947XXXXXXXX (no + and no starting 0)
+const STORE_WHATSAPP = "94+753777492";
+
+$("#checkoutForm").onsubmit = e => {
+  e.preventDefault();
+
+  if (!cart.length) {
+    toast("Your shopping bag is empty.");
+    return;
+  }
+
+  const data = Object.fromEntries(new FormData(e.target));
+  const items = cart.map(x => ({
+    ...products.find(p => p.id === x.id),
+    qty: x.qty
+  }));
+
+  const total = items.reduce(
+    (sum, p) => sum + p.price * p.qty, 0
+  );
+
+  const reference = "FM" + Date.now().toString().slice(-8);
+
+  const message = [
+    "🛍️ FARUMAX NEW ORDER",
+    "Order: " + reference,
+    "",
+    "Customer: " + data.name,
+    "Phone: " + data.phone,
+    "Address: " + data.address,
+    "",
+    "PRODUCTS:",
+    ...items.map(p =>
+      p.name + " x " + p.qty + " = " + money(p.price * p.qty)
+    ),
+    "",
+    "TOTAL: " + money(total),
+    "Payment: " + data.payment,
+    "",
+    "Thank you for choosing FARUMAX!"
+  ].join("\n");
+
+  if (STORE_WHATSAPP.includes("X")) {
+    alert("Please set the store WhatsApp number first.");
+    return;
+  }
+
+  const url =
+    "https://wa.me/" + STORE_WHATSAPP +
+    "?text=" + encodeURIComponent(message);
+
+  window.open(url, "_blank");
+  toast("WhatsApp opened. Press Send to place your order.");
+};
