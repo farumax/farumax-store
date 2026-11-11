@@ -32,4 +32,3 @@ $("#accountBtn").onclick=()=>toast("Customer accounts will be enabled after back
 
 
 
-const STORE_WHATSAPP
