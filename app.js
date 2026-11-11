@@ -30,7 +30,7 @@ $("#checkoutForm").onsubmit=e=>{e.preventDefault();let data=Object.fromEntries(n
 $("#newsletterForm").onsubmit=e=>{e.preventDefault();toast("Thanks! Newsletter signup is a demo only.");e.target.reset()};
 $("#accountBtn").onclick=()=>toast("Customer accounts will be enabled after backend setup.");$("#year").textContent=new Date().getFullYear();renderCategories();renderProducts();persist();
 
-const STORE_WHATSAPP = "94XXXXXXXXX";
+const STORE_WHATSAPP = "94753777492";
 
 $("#checkoutForm").onsubmit = e => {
   e.preventDefault();
