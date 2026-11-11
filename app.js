@@ -16,7 +16,7 @@ const products = [
 
 // Set an adult-managed store WhatsApp number here.
 // Country code included; do not use + or spaces.
-const STORE_WHATSAPP = "940753777492";
+const STORE_WHATSAPP = "94753777492";
 
 const categories = [
 ["All","✦"],["Electronics","⌁"],["Fashion","✧"],
