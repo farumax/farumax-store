@@ -34,7 +34,7 @@ $("#accountBtn").onclick=()=>toast("Customer accounts will be enabled after back
 // FARUMAX WhatsApp Order System
 // Replace this with an adult-managed public store WhatsApp number.
 // Sri Lanka format: 947XXXXXXXX (no + and no starting 0)
-const STORE_WHATSAPP = "94+753777492";
+const STORE_WHATSAPP = "947XXXXXXXX";
 
 $("#checkoutForm").onsubmit = e => {
   e.preventDefault();
